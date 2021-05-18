@@ -1,0 +1,472 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+// flag-icon-css
+@import "~flag-icon-css/sass/flag-icon";
+
+@import "./fontawesome/scss/fontawesome.scss";
+@import "./fontawesome/scss/solid.scss";
+@import "./fontawesome/scss/regular.scss";
+
+/*************************
+*******Typography******
+**************************/
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+.admin-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    padding: 0px;
+}
+
+/* rotate menu icon after click*/
+.rotate {
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.rotate.down {
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+/* admin left sidebar */
+.admin-wrapper {
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        /* overflow-y:auto; */
+        background: #2a3f54; /*dark*/
+        color: #fff;
+        transition: all 0.3s;
+    }
+    #sidebar.active {
+        margin-left: -250px;
+    }
+    a[data-toggle="collapse"] {
+        position: relative;
+    }
+    @media (max-width: 768px) {
+        #sidebar {
+            margin-left: -250px;
+        }
+        #sidebar.active {
+            margin-left: 0;
+        }
+    }
+    .dropdown-toggle::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    #sidebar .sidebar-header {
+        padding: 20px;
+        color: #fff;
+    }
+    #sidebar .sidebar-header a {
+        color: #fff;
+    }
+    #sidebar ul.components {
+        padding: 20px 0;
+    }
+    #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+    }
+    #sidebar ul li {
+        a {
+            color: #fff;
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+        }
+        a.active,
+        a:hover {
+            background: #4d7399; /*less dark*/
+        }
+    }
+
+    #sidebar ul li.active {
+        > a,
+        a[aria-expanded="true"] {
+            color: #fff;
+        }
+    }
+    #sidebar ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important;
+    }
+}
+
+/* admin */
+.flex-left-parent,
+.flex-right-parent {
+    display: flex;
+    flex-wrap: wrap;
+    .text {
+        line-height: 31px;
+    }
+    > select,
+    .autocomplete input,
+    .v-select {
+        min-width: 210px;
+    }
+    .color-picker {
+        width: 160px;
+    }
+}
+
+.flex-left-parent > * {
+    margin-right: 4px;
+}
+
+.flex-right-parent > * {
+    margin-left: 4px;
+}
+
+.v-select-formats {
+    min-width: 280px;
+}
+.orders-filters {
+    > * {
+        margin-left: 4px;
+        margin-bottom: 4px;
+    }
+    .v-select {
+        min-width: 240px;
+    }
+}
+
+.flex-right-parent input,
+.flex-parent input,
+.search_input {
+    padding-left: 4px;
+}
+
+/* pagination */
+ul.pagination {
+    .page-item .page-link {
+        background-color: $yellow; /* text-info #6cb2eb; */
+        border-color: $yellow;
+    }
+}
+
+ul.pagination {
+    justify-content: flex-end;
+}
+
+ul.pagination li {
+    margin-right: 3px;
+}
+// autocomplete
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+}
+.full-height {
+    height: 100%;
+}
+.full-width {
+    width: 100%;
+}
+.ul-autocomplete {
+    position: absolute;
+    z-index: 99 !important;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+/* modal  header with close button */
+.card-header {
+    display: flex;
+    align-items: center;
+}
+
+/** scrollUp **/
+a#scrollUp {
+    bottom: 0px;
+    right: 10px;
+    padding: 5px 10px;
+    background: #3399ff; /*blue*/
+    color: #fff;
+    border-radius: 50%;
+    -webkit-animation: bounce 2s ease infinite;
+    animation: bounce 2s ease infinite;
+}
+
+a#scrollUp i {
+    font-size: 30px;
+}
+
+/* front office */
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+// https://github.com/lsv/fifa-worldcup-2018-jsfrontend/blob/bf8616b1a3b58d06869bce0f386918ba9ce43ec6/src/style.scss
+
+table {
+    @extend .table;
+}
+
+td {
+    @extend .align-middle;
+}
+
+footer {
+    @extend .mt-4;
+}
+
+.table-vsm td,
+.table-vsm th {
+    padding: 0.2rem;
+    font-size: 0.8rem;
+}
+
+.table-noborder td {
+    border-top: 0;
+}
+
+.team--name {
+    white-space: nowrap;
+    > i.teammatches {
+        cursor: pointer;
+    }
+    > span {
+        cursor: pointer;
+    }
+    &.team--name--hover {
+        letter-spacing: -0.4px;
+        font-weight: bold;
+    }
+}
+
+.groups,
+.stadiums {
+    @extend .row;
+    @extend .mb-4;
+    @extend .justify-content-around;
+    & > .col {
+        flex-basis: 33%; // modified for 3 columns
+    }
+    & .card--group {
+        @extend .mb-4;
+        table {
+            @extend .table-vsm;
+        }
+        button {
+            @extend .p-2;
+            @extend .close;
+            @extend .btn-block;
+            font-size: 0.9rem;
+        }
+    }
+    &:nth-child(4) {
+        @include clearfix();
+    }
+}
+
+.knockouts {
+    @extend .row;
+    @extend .justify-content-around;
+    @extend .align-items-center;
+    & .card {
+        @extend .mb-4;
+        @extend .ml-3;
+        @extend .mr-3;
+        flex-grow: 1;
+    }
+}
+
+.card--round_2 {
+    @extend .text-white;
+    @extend .bg-success;
+    & > .card-header {
+        @extend .text-white;
+        @extend .bg-success;
+    }
+}
+
+.card--round_2_loser {
+    @extend .text-dark;
+    @extend .bg-warning;
+    & > .card-header {
+        @extend .text-dark;
+        @extend .bg-warning;
+    }
+}
+
+.table-groups,
+.table-knockouts {
+    &--result {
+        margin: 5px;
+        width: 2rem;
+        text-align: center;
+        border-radius: 0;
+        @extend .form-control;
+        @extend .form-control-sm;
+    }
+    &--spacer {
+        cursor: help;
+    }
+    &--label {
+        margin-bottom: 0;
+    }
+    &--finished {
+    }
+    &--winner {
+        background-color: #c3e6cb;
+    }
+    &--loser {
+        background-color: #ff626d;
+    }
+    &--draw {
+        background-color: #bee5eb;
+    }
+    &--hometeam {
+        white-space: nowrap;
+    }
+    &--awayteam {
+        white-space: nowrap;
+    }
+}
+
+.card {
+    & > table {
+        margin-bottom: 0;
+    }
+    &-footer table {
+        margin-bottom: 0;
+    }
+}
+
+.close {
+    cursor: pointer;
+    &--close span {
+        transform: rotate(0deg);
+        transition: all 0.5s;
+        display: inline-block;
+    }
+    &--plus span {
+        transform: rotate(-45deg);
+        transition: all 0.5s;
+        display: inline-block;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.gold {
+    color: #ffd700;
+}
+
+.bronze {
+    color: #cd7f32;
+}
+
+tbody.tbody {
+    &--close {
+        display: none;
+    }
+
+    &--open {
+        display: table-row-group;
+    }
+}
+
+.map {
+    height: 500px;
+}
+
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.loading:not(:required) {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.loading:not(:required):after {
+    content: "";
+    display: block;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    animation: spinner 1500ms infinite linear;
+    border-radius: 0.5em;
+    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
