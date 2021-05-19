@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Match;
+use App\Models\Game;
 use App\Models\Group;
 use App\Models\Knockout;
 use App\Models\Pronostic;
@@ -29,8 +29,8 @@ class PronosticController extends Controller
 
     public function index()
     {
-        $groups = Group::with(['matches','teams','matches.homeTeam','matches.awayTeam','matches.stadium'])->get();
-        $knockouts = Knockout::with(['matches','matches.homeTeam','matches.awayTeam','matches.stadium'])->get();
+        $groups = Group::with(['games','teams','games.homeTeam','games.awayTeam','games.stadium'])->get();
+        $knockouts = Knockout::with(['games','games.homeTeam','games.awayTeam','games.stadium'])->get();
         $pronostics = Auth::user()->pronostics;
         // construct standings array for all groups
         $standings = Auth::user()->standings($groups);
@@ -46,30 +46,35 @@ class PronosticController extends Controller
     public function index_json()
     {
         $pronostics = Auth::user()->pronostics;
-//      $matches = Match::where('id','<',49)->where('date','<',Carbon::now()->addHours(24))->orderBy('date','asc')->get();
-	 $matches = Match::where('id','<',49)->where('date','<',Carbon::now()->addHours(48))->orderBy('date','asc')->get();
-        $statistics_group = Match::statistics_group($matches);
+//      $games = Game::where('id','<',49)->where('date','<',Carbon::now()->addHours(24))->orderBy('date','asc')->get();
+	    $games = Game::where('id','<',49)->where('date','<',Carbon::now()->addHours(48))->orderBy('date','asc')->get();
+        $statistics_group = Game::statistics_group($games);
         //return $pronostics;
         return response()->json([
             'pronostics' => $pronostics,
             'statistics_group' => $statistics_group,
             'user'=>Auth::user(),
-            'disabled' =>Match::orderBy('date')->first()->date->lt( Carbon::now()->addHours(1)),
+            'disabled' =>Game::orderBy('date')->first()->date->lt( Carbon::now()->addHours(1)),
         ]);
     }
 
     // ajax udpate
-    public function update_scores(Request $request){
+    public function update(Request $request){
         // check date if updating pronostics is disbaled
-        $disabled = Match::orderBy('date')->first()->date->lt( Carbon::now()->addHours(1));
+        $disabled = Game::orderBy('date')->first()->date->lt( Carbon::now()->addHours(1));
         if ($disabled==true) return;
         //validate
-        $match = Match::find($request->match_id);
+        $game = Game::find($request->game_id);
         $pronostic = Pronostic::firstOrCreate([
             'user_id'=>auth()->id(),
-            'match_id'=>$request->match_id
+            'game_id'=>$request->game_id
             ]);
-        $pronostic->update( $request->only(['score_h', 'score_a']));
-        Auth::user()->update_knockouts();
+        $pronostic->update( $request->only(['score_h', 'score_a', 'team_h', 'team_a']));
+        // update knockout teams
+        // Auth::user()->update_knockouts();
+
+        return response()->json([
+            'pronostic' => $pronostic
+        ]);
      }
 }

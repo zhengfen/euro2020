@@ -7,7 +7,7 @@
                 {{ $match->homeTeam->name}}
             </span>
         @else
-            <span> {{ $match->team_h_description}} </span>
+            <span> {{ $match->qualification_h}} </span>
         @endif
         <label clss="{{ $match->gameClass.'--label'}}">
             <!--match score_h-->
@@ -39,7 +39,7 @@
                 {{ $match->awayTeam->name}}
             </span>
         @else
-            <span>{{ $match->team_a_description }}</span>
+            <span>{{ $match->qualification_a }}</span>
         @endif
     </td>
 </tr>

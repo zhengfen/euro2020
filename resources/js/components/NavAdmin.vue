@@ -18,7 +18,7 @@
         </a>
       </li>
       <li>
-        <a href="/matches" :class="{ active: ['/matches'].includes(pathname) }">
+        <a href="/games" :class="{ active: ['/games'].includes(pathname) }">
           Matches
         </a>
       </li>

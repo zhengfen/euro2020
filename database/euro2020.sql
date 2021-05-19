@@ -172,8 +172,8 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `stadium_id` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `team_h_description` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `team_a_description` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qualification_h` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qualification_a` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `group_id` int(10) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `matches` (
 -- Dumping data for table `matches`
 --
 
-INSERT INTO `matches` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, `pen_a`, `stadium_id`, `type`, `date`, `team_h_description`, `team_a_description`, `group_id`) VALUES
+INSERT INTO `matches` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, `pen_a`, `stadium_id`, `type`, `date`, `qualification_h`, `qualification_a`, `group_id`) VALUES
 (1, 3, 1, 0, 2, NULL, NULL, 11, 0, '2021-06-11 21:00:00', NULL, NULL, 1),
 (2, 4, 2, 1, 1, NULL, NULL, 2, 0, '2021-06-12 15:00:00', NULL, NULL, 1),
 (3, 6, 7, NULL, NULL, NULL, NULL, 6, 0, '2021-06-12 18:00:00', NULL, NULL, 2),

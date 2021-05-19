@@ -11,7 +11,7 @@
             <ul class="navbar-nav mr-auto" style="padding-left:10px">
                 <li {{ (isset($page) && $page == 'home') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('welcome') }}">Bienvenue(e)</a></li>
                 <!--li {{ (isset($page) && $page == 'pronostics') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('pronostics') }}">Pronostics</a></li-->
-                <!--li {{ (isset($page) && $page == 'matches') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('matches') }}">Matches</a></li-->
+                <!--li {{ (isset($page) && $page == 'games') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('games') }}">Matches</a></li-->
                 <li class="nav-item"><a class="nav-link" href="/vue">Pronostics</a></li>
                 <li class="nav-item"><a class="nav-link" href="/vue/phase">Matches</a></li>
                 <li class="nav-item"><a class="nav-link" href="/vue/stadiums">Stadium</a></li>

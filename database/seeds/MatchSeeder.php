@@ -14,6 +14,6 @@ class MatchSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('matches')->insert([]);
+        DB::table('games')->insert([]);
     }
 }

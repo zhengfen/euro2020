@@ -17,9 +17,9 @@ class Group extends Model
         return $this->hasMany(Team::class);
     }
 
-    public function matches()
+    public function games()
     {
-        return $this->hasMany(Match::class)->orderBy('id');
+        return $this->hasMany(Game::class)->orderBy('id');
     }
 
     // team standings within a group  // team: TeamModel|string, played: number = 0, wins: number = 0, draws: number = 0, losses: number = 0, goalsFor: number = 0, goalsAgainst: number = 0)
@@ -40,27 +40,27 @@ class Group extends Model
                 'goalsAgainst' => 0,
             );
         }
-        // update values according to each match
-        foreach ($this->matches as $match) {  // only group matches
-            if (is_null($match->score_h) || is_null($match->score_a)) break;  // match not finished
-            $standings[$match->team_h]['played'] += 1;
-            $standings[$match->team_a]['played'] += 1;
-            $standings[$match->team_h]['goalsFor'] += $match->score_h;
-            $standings[$match->team_h]['goalsAgainst'] += $match->score_a;
-            $standings[$match->team_a]['goalsFor'] += $match->score_a;
-            $standings[$match->team_a]['goalsAgainst'] += $match->score_h;
-            switch ($match->score_h <=> $match->score_a) {
+        // update values according to each game
+        foreach ($this->games as $game) {  // only group games
+            if (is_null($game->score_h) || is_null($game->score_a)) break;  // game not finished
+            $standings[$game->team_h]['played'] += 1;
+            $standings[$game->team_a]['played'] += 1;
+            $standings[$game->team_h]['goalsFor'] += $game->score_h;
+            $standings[$game->team_h]['goalsAgainst'] += $game->score_a;
+            $standings[$game->team_a]['goalsFor'] += $game->score_a;
+            $standings[$game->team_a]['goalsAgainst'] += $game->score_h;
+            switch ($game->score_h <=> $game->score_a) {
                 case 0:
-                    $standings[$match->team_h]['draws'] += 1;
-                    $standings[$match->team_a]['draws'] += 1;
+                    $standings[$game->team_h]['draws'] += 1;
+                    $standings[$game->team_a]['draws'] += 1;
                     break;
                 case 1:
-                    $standings[$match->team_h]['wins'] += 1;
-                    $standings[$match->team_a]['losses'] += 1;
+                    $standings[$game->team_h]['wins'] += 1;
+                    $standings[$game->team_a]['losses'] += 1;
                     break;  // home team wins
                 case -1:
-                    $standings[$match->team_h]['losses'] += 1;
-                    $standings[$match->team_a]['wins'] += 1;
+                    $standings[$game->team_h]['losses'] += 1;
+                    $standings[$game->team_a]['wins'] += 1;
                     break;  // home team loses
             }
         }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Group;
 use App\Models\Team;
-use App\Models\Match;
+use App\Models\Game;
 use App\Models\Stadium;
 
 
@@ -18,7 +18,7 @@ class FrontController extends Controller
         return view('front.phase', [
             'groups' => Group::orderBy('id')->get(['id','name']),
             'teams' => Team::get(['id', 'name', 'iso', 'group_id']),
-            'matches' => Match::all(),
+            'games' => Game::all(),
             'stadiums' => Stadium::all()
         ]);
     }
@@ -29,7 +29,7 @@ class FrontController extends Controller
         return view('front.pronostics', [
             'groups' => Group::orderBy('id')->get(['id','name']),
             'teams' => Team::get(['id', 'name', 'iso', 'group_id']),
-            'matches' => Match::all(),
+            'games' => Game::all(),
             'stadiums' => Stadium::all(),
             'pronostics' => $pronostics,
         ]);

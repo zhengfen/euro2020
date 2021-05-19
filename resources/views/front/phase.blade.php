@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<match-phase :groups="{{ $groups }}"  :teams="{{ $teams }}" :matches="{{ $matches }}" :stadiums="{{ $stadiums }}"
-></match-phase>
+<phase-view :groups="{{ $groups }}"  :teams="{{ $teams }}" :games="{{ $games }}" :stadiums="{{ $stadiums }}"
+></phase-view>
 @endsection

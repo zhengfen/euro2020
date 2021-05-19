@@ -58,10 +58,9 @@
         <table class="table-groups">
           <tbody :class="[show() ? 'tbody--open' : 'tbody--close']">
             <pronostic
-              v-for="(match, index) in getMatchesByGroup(group.id)"
+              v-for="(game, index) in getGamesByGroup(group.id)"
               :id="group.name"
-              :match="match"
-              :gametype="'groups'"
+              :game="game"
               :key="index"
             ></pronostic>
           </tbody>
@@ -102,7 +101,7 @@ export default {
   methods: {
     pronostic(id) {
       return this.pronostics.find(function (obj) {
-        return obj.match_id === id;
+        return obj.game_id === id;
       });
     },
     show() {
@@ -113,8 +112,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("matches", [
-      "getMatchesByGroup",
+    ...mapGetters("games", [
+      "getGamesByGroup",
       "getPronosticStandingsByGroup",
     ]),
   },

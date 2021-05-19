@@ -27,8 +27,8 @@ Route::group(
     function () {
         Route::resource('/groups', 'GroupController')->only(['index', 'store', 'update', 'destroy']);
         Route::get('/api/groups', 'GroupController@index_api');
-        Route::resource('/matches', 'MatchController')->only(['index', 'store', 'update', 'destroy']);
-        Route::get('/api/matches', 'MatchController@index_api');
+        Route::resource('/games', 'GameController')->only(['index', 'store', 'update', 'destroy']);
+        Route::get('/api/games', 'GameController@index_api');
         Route::resource('/teams', 'TeamController')->only(['index', 'store', 'update', 'destroy']);
         Route::get('/api/teams', 'TeamController@index_api');
         Route::resource('/stadiums', 'StadiumController')->only(['index', 'store', 'update', 'destroy']);
@@ -49,6 +49,6 @@ Route::group(
     ['middleware' => ['auth']],
     function () {
         Route::get('/pronostics', 'FrontController@pronostics');
-        Route::post('/pronostics/update_scores', 'PronosticController@update_scores');
+        Route::post('/pronostics/update', 'PronosticController@update');
     }
 );
