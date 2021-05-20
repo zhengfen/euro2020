@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Route::get('/phase', 'FrontController@phase');
 
@@ -33,6 +32,10 @@ Route::group(
         Route::get('/api/teams', 'TeamController@index_api');
         Route::resource('/stadiums', 'StadiumController')->only(['index', 'store', 'update', 'destroy']);
         Route::get('/api/stadiums', 'StadiumController@index_api');
+
+        // 
+        // clean tables
+        Route::get('/table/truncate/{name}', 'AdminController@truncate');
     }
 );
 

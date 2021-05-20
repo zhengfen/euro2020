@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">Worldcup 2018 - Russia</a>
+        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name')}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,16 +9,15 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto" style="padding-left:10px">
-                <li {{ (isset($page) && $page == 'home') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('welcome') }}">Bienvenue(e)</a></li>
-                <!--li {{ (isset($page) && $page == 'pronostics') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('pronostics') }}">Pronostics</a></li-->
-                <!--li {{ (isset($page) && $page == 'games') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('games') }}">Matches</a></li-->
-                <li class="nav-item"><a class="nav-link" href="/vue">Pronostics</a></li>
-                <li class="nav-item"><a class="nav-link" href="/vue/phase">Matches</a></li>
-                <li class="nav-item"><a class="nav-link" href="/vue/stadiums">Stadium</a></li>
-                <li {{ (isset($page) && $page == 'ranking') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('ranking') }}">Classement</a></li>
+                <li {{ (isset($page) && $page == 'home') ? 'class=active' : ''}}><a class="nav-link" href="/home">Bienvenue(e)</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pronostics">Pronostics</a></li>
+                <li class="nav-item"><a class="nav-link" href="/phase">Matches</a></li>
+                {{--
+                <li {{ (isset($page) && $page == 'ranking') ? 'class=active' : ''}} v-if="false"><a class="nav-link" href="{{ route('ranking') }}">Classement</a></li>
+                --}}
                 @auth
-                @if( Auth::user()->id == env('ADMIN_ID') )
-                <li {{ (isset($page) && $page == 'admin') ? 'class=active' : ''}}><a class="nav-link" href="{{ route('admin') }}">Admin</a></li>
+                @if( Auth::user()->isAdmin())
+                <li {{ (isset($page) && $page == 'admin') ? 'class=active' : ''}}><a class="nav-link" href="/games">Admin</a></li>
                 @endif
                 @endauth
             </ul>

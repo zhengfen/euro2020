@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 18, 2021 at 07:22 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Generation Time: May 20, 2021 at 12:07 PM
+-- Server version: 5.7.19
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -132,36 +132,11 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Table structure for table `games`
 --
 
-DROP TABLE IF EXISTS `groups`;
-CREATE TABLE IF NOT EXISTS `groups` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `name`) VALUES
-(1, 'A'),
-(2, 'B'),
-(3, 'C'),
-(4, 'D'),
-(5, 'E'),
-(6, 'F');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `matches`
---
-
-DROP TABLE IF EXISTS `matches`;
-CREATE TABLE IF NOT EXISTS `matches` (
+DROP TABLE IF EXISTS `games`;
+CREATE TABLE IF NOT EXISTS `games` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `team_h` int(11) DEFAULT NULL,
   `team_a` int(11) DEFAULT NULL,
@@ -179,12 +154,12 @@ CREATE TABLE IF NOT EXISTS `matches` (
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `matches`
+-- Dumping data for table `games`
 --
 
-INSERT INTO `matches` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, `pen_a`, `stadium_id`, `type`, `date`, `qualification_h`, `qualification_a`, `group_id`) VALUES
-(1, 3, 1, 0, 2, NULL, NULL, 11, 0, '2021-06-11 21:00:00', NULL, NULL, 1),
-(2, 4, 2, 1, 1, NULL, NULL, 2, 0, '2021-06-12 15:00:00', NULL, NULL, 1),
+INSERT INTO `games` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, `pen_a`, `stadium_id`, `type`, `date`, `qualification_h`, `qualification_a`, `group_id`) VALUES
+(1, 3, 1, NULL, NULL, NULL, NULL, 11, 0, '2021-06-11 21:00:00', NULL, NULL, 1),
+(2, 4, 2, NULL, NULL, NULL, NULL, 2, 0, '2021-06-12 15:00:00', NULL, NULL, 1),
 (3, 6, 7, NULL, NULL, NULL, NULL, 6, 0, '2021-06-12 18:00:00', NULL, NULL, 2),
 (4, 5, 8, NULL, NULL, NULL, NULL, 12, 0, '2021-06-12 21:00:00', NULL, NULL, 2),
 (5, 15, 13, NULL, NULL, NULL, NULL, 9, 0, '2021-06-13 15:00:00', NULL, NULL, 4),
@@ -219,14 +194,14 @@ INSERT INTO `matches` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, 
 (34, 18, 19, NULL, NULL, NULL, NULL, 3, 0, '2021-06-23 18:00:00', NULL, NULL, 5),
 (35, 22, 23, NULL, NULL, NULL, NULL, 10, 0, '2021-06-23 21:00:00', NULL, NULL, 6),
 (36, 24, 21, NULL, NULL, NULL, NULL, 5, 0, '2021-06-23 21:00:00', NULL, NULL, 6),
-(37, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-26 18:00:00', '2_A', 'B_2', NULL),
+(37, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-26 18:00:00', '2_A', '2_B', NULL),
 (38, NULL, NULL, NULL, NULL, NULL, NULL, 9, 1, '2021-06-26 21:00:00', '1_A', '2_C', NULL),
 (39, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2021-06-27 18:00:00', '1_C', '3_DEF', NULL),
-(40, NULL, NULL, NULL, NULL, NULL, NULL, 3, 1, '2021-06-27 21:00:00', '1B', '3ADEF', NULL),
-(41, NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2021-06-28 18:00:00', '2D', '2E', NULL),
-(42, NULL, NULL, NULL, NULL, NULL, NULL, 4, 1, '2021-06-28 21:00:00', '1F', '3ABC', NULL),
-(43, NULL, NULL, NULL, NULL, NULL, NULL, 9, 1, '2021-06-29 18:00:00', '1D', '2F', NULL),
-(44, NULL, NULL, NULL, NULL, NULL, NULL, 8, 1, '2021-06-29 21:00:00', '1E', '3ABCD', NULL),
+(40, NULL, NULL, NULL, NULL, NULL, NULL, 3, 1, '2021-06-27 21:00:00', '1_B', '3_ADEF', NULL),
+(41, NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2021-06-28 18:00:00', '2_D', '2_E', NULL),
+(42, NULL, NULL, NULL, NULL, NULL, NULL, 4, 1, '2021-06-28 21:00:00', '1_F', '3_ABC', NULL),
+(43, NULL, NULL, NULL, NULL, NULL, NULL, 9, 1, '2021-06-29 18:00:00', '1_D', '2_F', NULL),
+(44, NULL, NULL, NULL, NULL, NULL, NULL, 8, 1, '2021-06-29 21:00:00', '1_E', '3_ABCD', NULL),
 (45, NULL, NULL, NULL, NULL, NULL, NULL, 12, 2, '2021-07-02 18:00:00', 'W42', 'W41', NULL),
 (46, NULL, NULL, NULL, NULL, NULL, NULL, 10, 2, '2021-07-02 21:00:00', 'W40', 'W38', NULL),
 (47, NULL, NULL, NULL, NULL, NULL, NULL, 2, 2, '2021-07-03 18:00:00', 'W39', 'W37', NULL),
@@ -234,6 +209,31 @@ INSERT INTO `matches` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, 
 (49, NULL, NULL, NULL, NULL, NULL, NULL, 9, 3, '2021-07-06 21:00:00', 'W46', 'W45', NULL),
 (50, NULL, NULL, NULL, NULL, NULL, NULL, 9, 3, '2021-07-07 21:00:00', 'W48', 'W47', NULL),
 (51, NULL, NULL, NULL, NULL, NULL, NULL, 9, 4, '2021-07-11 21:00:00', 'W49', 'W50', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`) VALUES
+(1, 'A'),
+(2, 'B'),
+(3, 'C'),
+(4, 'D'),
+(5, 'E'),
+(6, 'F');
 
 -- --------------------------------------------------------
 
@@ -463,7 +463,7 @@ DROP TABLE IF EXISTS `pronostics`;
 CREATE TABLE IF NOT EXISTS `pronostics` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` smallint(5) UNSIGNED NOT NULL,
-  `match_id` smallint(5) UNSIGNED NOT NULL,
+  `game_id` smallint(5) UNSIGNED NOT NULL,
   `team_h` smallint(5) UNSIGNED DEFAULT NULL,
   `team_a` smallint(5) UNSIGNED DEFAULT NULL,
   `score_h` smallint(5) UNSIGNED DEFAULT NULL,
@@ -471,15 +471,8 @@ CREATE TABLE IF NOT EXISTS `pronostics` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `prognostics_user_id_match_id_unique` (`user_id`,`match_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pronostics`
---
-
-INSERT INTO `pronostics` (`id`, `user_id`, `match_id`, `team_h`, `team_a`, `score_h`, `score_a`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL, 2, 1, '2021-05-17 18:17:30', '2021-05-17 18:25:41');
+  UNIQUE KEY `prognostics_user_id_match_id_unique` (`user_id`,`game_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 

@@ -18,7 +18,6 @@ const module = {
       state.teams = payload;
     },
     gamesMutation(state, payload) {
-      console.log('gamesMutation', payload);
       state.games = payload;
     },
     stadiumsMutation(state, payload) {
@@ -51,7 +50,7 @@ const module = {
         axios.post("/pronostics/update", payload)
           .then(({ data }) => {
             console.log(data); 
-            if (data.pronostic) commit('pronosticMutation', data.pronostic);
+            // if (data.pronostic) commit('pronosticMutation', data.pronostic);  // mutation is commit directly from Pronostic.vue
             resolve(data); 
           })
           .catch(error => reject(error));

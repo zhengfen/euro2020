@@ -12,7 +12,6 @@
       <knockout-pronostics />
     </section>
 
-    {{ getThirdTeamsStandings }}
   </div>
 </template>
 

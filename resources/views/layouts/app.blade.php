@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,15 +25,14 @@
     <link rel="icon" href="{{ asset('images/favicon/football-soccer-ball-32-183228.png') }}" sizes="32x32">
     <!-- Scripts -->
     <script>
-        window.App = {!! json_encode([
-            'user' => Auth::user()
-        ]) !!};
+        window.App = {!! json_encode(['user' => Auth::user()]) !!};
     </script>
     @yield('head')
 </head>
+
 <body style="background: #a6a2a3;">
     <div id="app">
-
+        @include('layouts._nav')
         <div class="container-fluid">
             @yield('content')
         </div>
@@ -42,4 +42,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
+
 </html>

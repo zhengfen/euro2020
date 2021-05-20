@@ -10,7 +10,7 @@
     </td>
     <!-- team home -->
     <td :class="homeclass + ' ' + gameclass + '--hometeam'" class="text-right">
-      <teamname :team="getTeam(game.team_h)" :ha="'h'" />
+      <teamname :team="getTeamById(game.team_h)" :ha="'h'" />
       <!-- scores -->
       <label :class="gameclass + '--label'">
         <input
@@ -47,7 +47,7 @@
           disabled
         />
       </label>
-      <teamname :team="getTeam(game.team_a)" :ha="'a'" />
+      <teamname :team="getTeamById(game.team_a)" :ha="'a'" />
     </td>
   </tr>
 </template>
@@ -112,7 +112,7 @@ export default {
       }
       return "";
     },
-    ...mapGetters("games", ["getTeam", "getStadiumName"]),
+    ...mapGetters("games", ["getTeamById", "getStadiumName"]),
   },
   methods: {
     setResult(e) {
