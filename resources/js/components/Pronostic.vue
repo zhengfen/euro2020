@@ -256,7 +256,8 @@ export default {
           (elem) => elem.game_id === gameCurrent.id
         );
         // if current game is finished
-        if (pronostic && pronostic.score_h !== null && pronostic.score_a !== null) {
+        // be carefull use !=  ,   undefined !== null true, undefined != null false
+        if (pronostic && pronostic.score_h != null && pronostic.score_a != null) {
           const field = gameNext.qualification_h === qualification ? 'team_h' : 'team_a';
           const team_id = pronostic.score_h > pronostic.score_a ? pronostic.team_h : pronostic.team_a;
           if (team_id) this.update_pronotic(gameNext.id, field, team_id);

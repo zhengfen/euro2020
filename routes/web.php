@@ -53,5 +53,8 @@ Route::group(
     function () {
         Route::get('/pronostics', 'FrontController@pronostics');
         Route::post('/pronostics/update', 'PronosticController@update');
+        // Classement, user points ranking
+        Route::get('/ranking', 'FrontController@ranking')->name('ranking');
+        Route::get('/api/dataset', 'FrontController@dataset');
     }
 );

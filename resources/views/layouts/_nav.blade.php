@@ -9,12 +9,10 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto" style="padding-left:10px">
-                <li {{ (isset($page) && $page == 'home') ? 'class=active' : ''}}><a class="nav-link" href="/home">Bienvenue(e)</a></li>
+                <li class="nav-item"><a class="nav-link" href="/home">Bienvenue(e)</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pronostics">Pronostics</a></li>
                 <li class="nav-item"><a class="nav-link" href="/phase">Matches</a></li>
-                {{--
-                <li {{ (isset($page) && $page == 'ranking') ? 'class=active' : ''}} v-if="false"><a class="nav-link" href="{{ route('ranking') }}">Classement</a></li>
-                --}}
+                <li class="nav-item"><a class="nav-link" href="{{ route('ranking') }}">Classement</a></li>
                 @auth
                 @if( Auth::user()->isAdmin())
                 <li {{ (isset($page) && $page == 'admin') ? 'class=active' : ''}}><a class="nav-link" href="/games">Admin</a></li>

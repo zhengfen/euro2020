@@ -263,7 +263,7 @@ function sortStanding(a, b) {
   }
 
   if (a.goalsFor !== b.goalsFor) {
-    return a.goalsFor < b.goalsFor ? -1 : 1;
+    return a.goalsFor < b.goalsFor ? 1 : -1;
   }
   /*
   let game = games.find((m: MatchModel) => {
