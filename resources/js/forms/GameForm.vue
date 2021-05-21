@@ -140,7 +140,6 @@ export default {
   created() {
     if (this.mode == "edit") {
       this.item = this.item_edit;
-      console.log(this.item);
     }
   },
   methods: {
@@ -148,7 +147,6 @@ export default {
       axios
         .post("/matches", this.item)
         .then(({ data }) => {
-          console.log("post return data", data);
           this.$emit("created", data.match);
           flash("Added success!", "success");
         })
@@ -160,7 +158,6 @@ export default {
       axios
         .patch("/games/" + this.item.id, this.item)
         .then(({ data }) => {
-          console.log("patch return data", data);
           this.$emit("updated", data.match);
           flash("Edited success!", "success");
         })

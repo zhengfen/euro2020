@@ -80,7 +80,6 @@ export default {
       axios
         .post("/teams", this.item)
         .then(({ data }) => {
-          console.log("post return data", data);
           this.$emit("created", data.team);
           flash("Added success!", "success");
         })
@@ -92,7 +91,6 @@ export default {
       axios
         .patch("/teams/" + this.item.id, this.item)
         .then(({ data }) => {
-          console.log("patch return data", data);
           this.$emit("updated", data.team);
           flash("Edited success!", "success");
         })

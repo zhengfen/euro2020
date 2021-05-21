@@ -114,9 +114,7 @@ export default {
   created() {},
   methods: {
     fetch() {
-      console.log("fetching teams");
       axios.get("/api/teams").then(({ data }) => {
-        console.log(data);
         this.items = data.teams;
       });
     },

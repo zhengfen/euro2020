@@ -24,15 +24,15 @@ class FrontController extends Controller
         ]);
     }
 
-    public function pronostics()
+    public function predictions()
     {
-        $pronostics = Auth::user()->pronostics;
-        return view('front.pronostics', [
+        $predictions = Auth::user()->predictions;
+        return view('front.predictions', [
             'groups' => Group::orderBy('id')->get(['id','name']),
             'teams' => Team::get(['id', 'name', 'iso', 'group_id']),
             'games' => Game::all(),
             'stadiums' => Stadium::all(),
-            'pronostics' => $pronostics,
+            'predictions' => $predictions,
         ]);
     }
 

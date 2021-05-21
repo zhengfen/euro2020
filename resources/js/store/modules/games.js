@@ -6,7 +6,7 @@ const module = {
     teams: [],
     games: [],
     stadiums: [],
-    pronostics: [],
+    predictions: [],
     disabled: false,
     statistics_group: []
   },
@@ -23,34 +23,33 @@ const module = {
     stadiumsMutation(state, payload) {
       state.stadiums = payload;
     },
-    pronosticsMutation(state, payload) {
-      state.pronostics = payload;
+    predictionsMutation(state, payload) {
+      state.predictions = payload;
     },
     // mutate for a single game
-    pronosticMutation(state, payload) {
+    predictionMutation(state, payload) {
       const game = state.games.find(elem => elem.id === payload.game_id);
-      // modify or add pronostic
-      let pronostic = state.pronostics.find(elem => elem.game_id === payload.game_id);
-      if (pronostic) {
-        if ('score_h' in payload) pronostic.score_h = payload.score_h;
-        if ('score_a' in payload) pronostic.score_a = payload.score_a;
-        if ('team_h' in payload) pronostic.team_h = payload.team_h;
-        if ('team_a' in payload) pronostic.team_a = payload.team_a;
+      // modify or add prediction
+      let prediction = state.predictions.find(elem => elem.game_id === payload.game_id);
+      if (prediction) {
+        if ('score_h' in payload) prediction.score_h = payload.score_h;
+        if ('score_a' in payload) prediction.score_a = payload.score_a;
+        if ('team_h' in payload) prediction.team_h = payload.team_h;
+        if ('team_a' in payload) prediction.team_a = payload.team_a;
       }
       else {
-        state.pronostics.push(payload);
+        state.predictions.push(payload);
       }      
     }
   },
   actions: {
-    async updatePronosticAction({ state, commit }, payload) {
-      // commit('pronosticMutation', payload);
+    async updatepredictionAction({ state, commit }, payload) {
+      // commit('predictionMutation', payload);
       return new Promise((resolve, reject) => {
-        // update input scores in database table pronostic
-        axios.post("/pronostics/update", payload)
+        // update input scores in database table prediction
+        axios.post("/predictions/update", payload)
           .then(({ data }) => {
-            console.log(data); 
-            // if (data.pronostic) commit('pronosticMutation', data.pronostic);  // mutation is commit directly from Pronostic.vue
+            // if (data.prediction) commit('predictionMutation', data.prediction);  // mutation is commit directly from prediction.vue
             resolve(data); 
           })
           .catch(error => reject(error));
@@ -134,34 +133,34 @@ const module = {
      * @param {*} getters 
      * @returns [{ team, played, goalsFor, goalsAgainst, wins, losses, draws }]
      */
-    getPronosticStandingsByGroup: (state, getters) => (group_id) => {
+    getpredictionStandingsByGroup: (state, getters) => (group_id) => {
       let standings = getters.getInitialStandingsByGroup(group_id);
       const games = getters.getGamesByGroup(group_id);
       for (const game of games) {
-        const pronostic = state.pronostics.find(elem => elem.game_id === game.id);
-        if (pronostic) {
-          if (pronostic.score_h != null && pronostic.score_a != null) {
+        const prediction = state.predictions.find(elem => elem.game_id === game.id);
+        if (prediction) {
+          if (prediction.score_h != null && prediction.score_a != null) {
             let standing_h = standings.find(elem => elem.team.id === game.team_h);
             let standing_a = standings.find(elem => elem.team.id === game.team_a);
 
             standing_h.played++;
             standing_a.played++;
 
-            standing_h.goalsFor += Number(pronostic.score_h);
-            standing_a.goalsFor += Number(pronostic.score_a);
+            standing_h.goalsFor += Number(prediction.score_h);
+            standing_a.goalsFor += Number(prediction.score_a);
 
-            standing_h.goalsAgainst += Number(pronostic.score_a);
-            standing_a.goalsAgainst += Number(pronostic.score_h);
+            standing_h.goalsAgainst += Number(prediction.score_a);
+            standing_a.goalsAgainst += Number(prediction.score_h);
 
-            if (pronostic.score_h > pronostic.score_a) {
+            if (prediction.score_h > prediction.score_a) {
               standing_h.wins++;
               standing_a.losses++;
             }
-            if (pronostic.score_h < pronostic.score_a) {
+            if (prediction.score_h < prediction.score_a) {
               standing_a.wins++;
               standing_h.losses++;
             }
-            if (pronostic.score_h == pronostic.score_a) {
+            if (prediction.score_h == prediction.score_a) {
               standing_a.draws++;
               standing_h.draws++;
             }
@@ -173,13 +172,13 @@ const module = {
       // Todo update standings
     },
 
-    // if the pronostics for the group is completed
+    // if the predictions for the group is completed
     isCompletedGroup: (state, getters) => (group_id) => {
       const games = getters.getGamesByGroup(group_id);
       for (const game of games) {
-        const pronostic = state.pronostics.find(elem => elem.game_id === game.id);
-        if (! pronostic) return false; 
-        if (pronostic.score_h == null || pronostic.score_a == null) return false;
+        const prediction = state.predictions.find(elem => elem.game_id === game.id);
+        if (! prediction) return false; 
+        if (prediction.score_h == null || prediction.score_a == null) return false;
       }
       return true; 
     },
@@ -217,7 +216,7 @@ const module = {
         if (position <=2){
           const group_name = quals[1]; 
           const group_id = getters.getGroupIdByName(group_name); 
-          const standings = getters.getPronosticStandingsByGroup(group_id); 
+          const standings = getters.getpredictionStandingsByGroup(group_id); 
           return standings[position-1].team; 
         }
       }
@@ -231,17 +230,17 @@ const module = {
     isCompletedGroups: (state) => {
       const games = state.games.filter( elem => elem.type ===0 ); 
       for (const game of games) {
-        const pronostic = state.pronostics.find(elem => elem.game_id === game.id);
-        if (! pronostic) return false; 
-        if (pronostic.score_h == null || pronostic.score_a == null) return false;
+        const prediction = state.predictions.find(elem => elem.game_id === game.id);
+        if (! prediction) return false; 
+        if (prediction.score_h == null || prediction.score_a == null) return false;
       }
       return true; 
     }, 
-    // get Third-placed teams qualify from groups, according to pronostic
+    // get Third-placed teams qualify from groups, according to prediction
     getThirdTeamsStandings: (state, getters) => {
       let standings = []; 
       for (let i = 1; i <= 6; i++){
-        standings.push(getters.getPronosticStandingsByGroup(i)[2]);
+        standings.push(getters.getpredictionStandingsByGroup(i)[2]);
       }
       return standings.sort(sortStanding);
     },

@@ -112,9 +112,7 @@ export default {
   created() {},
   methods: {
     fetch() {
-      console.log("fetching groups");
       axios.get("/api/groups").then(({ data }) => {
-        console.log(data);
         this.items = data.groups;
       });
     },

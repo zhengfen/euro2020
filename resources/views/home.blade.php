@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">Bienvenu(e)</div>
                 <div class="card-body">
+
                     <h2>R&eacute;glement des pronostics de Foot</h2>
                     <strong>Principes:</strong>
                     <ul>
@@ -40,7 +41,7 @@
                         <li><strong>Finale</strong>
                             <ul>
                                 <li>10 points pour avoir choisi la bonne &eacute;quipe qualifi&eacute;e</li>
-                                <li>20 points pour avoir choisi le bon champion</li>
+                                <li>20 points pour avoir choisi le bon champion du monde</li>
                             </ul>
                         </li>
                     </ol>

@@ -150,13 +150,10 @@ export default {
     };
   },
   created() {
-    console.log(this.stadiums);
   },
   methods: {
     fetch() {
-      console.log("fetching games");
       axios.get("/api/games").then(({ data }) => {
-        console.log(data);
         this.items = data.games;
       });
     },

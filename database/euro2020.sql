@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 20, 2021 at 12:07 PM
+-- Generation Time: May 21, 2021 at 09:28 AM
 -- Server version: 5.7.19
 -- PHP Version: 8.0.6
 
@@ -158,42 +158,42 @@ CREATE TABLE IF NOT EXISTS `games` (
 --
 
 INSERT INTO `games` (`id`, `team_h`, `team_a`, `score_h`, `score_a`, `pen_h`, `pen_a`, `stadium_id`, `type`, `date`, `qualification_h`, `qualification_a`, `group_id`) VALUES
-(1, 3, 1, NULL, NULL, NULL, NULL, 11, 0, '2021-06-11 21:00:00', NULL, NULL, 1),
-(2, 4, 2, NULL, NULL, NULL, NULL, 2, 0, '2021-06-12 15:00:00', NULL, NULL, 1),
-(3, 6, 7, NULL, NULL, NULL, NULL, 6, 0, '2021-06-12 18:00:00', NULL, NULL, 2),
-(4, 5, 8, NULL, NULL, NULL, NULL, 12, 0, '2021-06-12 21:00:00', NULL, NULL, 2),
-(5, 15, 13, NULL, NULL, NULL, NULL, 9, 0, '2021-06-13 15:00:00', NULL, NULL, 4),
-(6, 9, 11, NULL, NULL, NULL, NULL, 4, 0, '2021-06-13 18:00:00', NULL, NULL, 3),
-(7, 10, 12, NULL, NULL, NULL, NULL, 1, 0, '2021-06-13 21:00:00', NULL, NULL, 3),
-(8, 16, 14, NULL, NULL, NULL, NULL, 8, 0, '2021-06-14 15:00:00', NULL, NULL, 4),
-(9, 17, 18, NULL, NULL, NULL, NULL, 12, 0, '2021-06-14 18:00:00', NULL, NULL, 5),
-(10, 19, 20, NULL, NULL, NULL, NULL, 3, 0, '2021-06-14 21:00:00', NULL, NULL, 5),
-(11, 23, 24, NULL, NULL, NULL, NULL, 5, 0, '2021-06-15 18:00:00', NULL, NULL, 6),
-(12, 21, 22, NULL, NULL, NULL, NULL, 10, 0, '2021-06-15 21:00:00', NULL, NULL, 6),
-(13, 7, 8, NULL, NULL, NULL, NULL, 12, 0, '2021-06-16 15:00:00', NULL, NULL, 2),
-(14, 3, 4, NULL, NULL, NULL, NULL, 2, 0, '2021-06-16 18:00:00', NULL, NULL, 1),
-(15, 1, 2, NULL, NULL, NULL, NULL, 11, 0, '2021-06-16 21:00:00', NULL, NULL, 1),
-(16, 12, 11, NULL, NULL, NULL, NULL, 4, 0, '2021-06-17 15:00:00', NULL, NULL, 3),
-(17, 6, 5, NULL, NULL, NULL, NULL, 6, 0, '2021-06-17 18:00:00', NULL, NULL, 2),
-(18, 10, 9, NULL, NULL, NULL, NULL, 1, 0, '2021-06-17 21:00:00', NULL, NULL, 3),
-(19, 20, 18, NULL, NULL, NULL, NULL, 12, 0, '2021-06-18 15:00:00', NULL, NULL, 5),
-(20, 13, 14, NULL, NULL, NULL, NULL, 8, 0, '2021-06-18 18:00:00', NULL, NULL, 4),
-(21, 15, 16, NULL, NULL, NULL, NULL, 9, 0, '2021-06-18 21:00:00', NULL, NULL, 4),
-(22, 23, 21, NULL, NULL, NULL, NULL, 5, 0, '2021-06-19 15:00:00', NULL, NULL, 6),
-(23, 24, 22, NULL, NULL, NULL, NULL, 10, 0, '2021-06-19 18:00:00', NULL, NULL, 6),
-(24, 19, 17, NULL, NULL, NULL, NULL, 3, 0, '2021-06-19 21:00:00', NULL, NULL, 5),
-(25, 1, 4, NULL, NULL, NULL, NULL, 11, 0, '2021-06-20 18:00:00', NULL, NULL, 1),
-(26, 2, 3, NULL, NULL, NULL, NULL, 2, 0, '2021-06-20 18:00:00', NULL, NULL, 1),
-(27, 12, 9, NULL, NULL, NULL, NULL, 4, 0, '2021-06-21 18:00:00', NULL, NULL, 3),
-(28, 11, 10, NULL, NULL, NULL, NULL, 1, 0, '2021-06-21 18:00:00', NULL, NULL, 3),
-(29, 7, 5, NULL, NULL, NULL, NULL, 12, 0, '2021-06-21 21:00:00', NULL, NULL, 2),
-(30, 8, 6, NULL, NULL, NULL, NULL, 6, 0, '2021-06-21 21:00:00', NULL, NULL, 2),
-(31, 14, 15, NULL, NULL, NULL, NULL, 9, 0, '2021-06-22 21:00:00', NULL, NULL, 4),
-(32, 13, 16, NULL, NULL, NULL, NULL, 8, 0, '2021-06-22 21:00:00', NULL, NULL, 4),
-(33, 20, 17, NULL, NULL, NULL, NULL, 12, 0, '2021-06-23 18:00:00', NULL, NULL, 5),
-(34, 18, 19, NULL, NULL, NULL, NULL, 3, 0, '2021-06-23 18:00:00', NULL, NULL, 5),
-(35, 22, 23, NULL, NULL, NULL, NULL, 10, 0, '2021-06-23 21:00:00', NULL, NULL, 6),
-(36, 24, 21, NULL, NULL, NULL, NULL, 5, 0, '2021-06-23 21:00:00', NULL, NULL, 6),
+(1, 3, 1, 1, 0, NULL, NULL, 11, 0, '2021-06-11 21:00:00', NULL, NULL, 1),
+(2, 4, 2, 3, 1, NULL, NULL, 2, 0, '2021-06-12 15:00:00', NULL, NULL, 1),
+(3, 6, 7, 3, 2, NULL, NULL, 6, 0, '2021-06-12 18:00:00', NULL, NULL, 2),
+(4, 5, 8, 2, 1, NULL, NULL, 12, 0, '2021-06-12 21:00:00', NULL, NULL, 2),
+(5, 15, 13, 1, 2, NULL, NULL, 9, 0, '2021-06-13 15:00:00', NULL, NULL, 4),
+(6, 9, 11, 1, 2, NULL, NULL, 4, 0, '2021-06-13 18:00:00', NULL, NULL, 3),
+(7, 10, 12, 0, 0, NULL, NULL, 1, 0, '2021-06-13 21:00:00', NULL, NULL, 3),
+(8, 16, 14, 1, 0, NULL, NULL, 8, 0, '2021-06-14 15:00:00', NULL, NULL, 4),
+(9, 17, 18, 0, 1, NULL, NULL, 12, 0, '2021-06-14 18:00:00', NULL, NULL, 5),
+(10, 19, 20, 1, 0, NULL, NULL, 3, 0, '2021-06-14 21:00:00', NULL, NULL, 5),
+(11, 23, 24, 5, 4, NULL, NULL, 5, 0, '2021-06-15 18:00:00', NULL, NULL, 6),
+(12, 21, 22, 1, 0, NULL, NULL, 10, 0, '2021-06-15 21:00:00', NULL, NULL, 6),
+(13, 7, 8, 2, 3, NULL, NULL, 12, 0, '2021-06-16 15:00:00', NULL, NULL, 2),
+(14, 3, 4, 0, 0, NULL, NULL, 2, 0, '2021-06-16 18:00:00', NULL, NULL, 1),
+(15, 1, 2, 2, 3, NULL, NULL, 11, 0, '2021-06-16 21:00:00', NULL, NULL, 1),
+(16, 12, 11, 0, 1, NULL, NULL, 4, 0, '2021-06-17 15:00:00', NULL, NULL, 3),
+(17, 6, 5, 0, 0, NULL, NULL, 6, 0, '2021-06-17 18:00:00', NULL, NULL, 2),
+(18, 10, 9, 1, 2, NULL, NULL, 1, 0, '2021-06-17 21:00:00', NULL, NULL, 3),
+(19, 20, 18, 3, 2, NULL, NULL, 12, 0, '2021-06-18 15:00:00', NULL, NULL, 5),
+(20, 13, 14, 0, 0, NULL, NULL, 8, 0, '2021-06-18 18:00:00', NULL, NULL, 4),
+(21, 15, 16, 0, 0, NULL, NULL, 9, 0, '2021-06-18 21:00:00', NULL, NULL, 4),
+(22, 23, 21, 2, 2, NULL, NULL, 5, 0, '2021-06-19 15:00:00', NULL, NULL, 6),
+(23, 24, 22, 1, 0, NULL, NULL, 10, 0, '2021-06-19 18:00:00', NULL, NULL, 6),
+(24, 19, 17, 2, 1, NULL, NULL, 3, 0, '2021-06-19 21:00:00', NULL, NULL, 5),
+(25, 1, 4, 3, 1, NULL, NULL, 11, 0, '2021-06-20 18:00:00', NULL, NULL, 1),
+(26, 2, 3, 0, 0, NULL, NULL, 2, 0, '2021-06-20 18:00:00', NULL, NULL, 1),
+(27, 12, 9, 0, 1, NULL, NULL, 4, 0, '2021-06-21 18:00:00', NULL, NULL, 3),
+(28, 11, 10, 2, 0, NULL, NULL, 1, 0, '2021-06-21 18:00:00', NULL, NULL, 3),
+(29, 7, 5, 1, 0, NULL, NULL, 12, 0, '2021-06-21 21:00:00', NULL, NULL, 2),
+(30, 8, 6, 3, 1, NULL, NULL, 6, 0, '2021-06-21 21:00:00', NULL, NULL, 2),
+(31, 14, 15, 1, 0, NULL, NULL, 9, 0, '2021-06-22 21:00:00', NULL, NULL, 4),
+(32, 13, 16, 1, 1, NULL, NULL, 8, 0, '2021-06-22 21:00:00', NULL, NULL, 4),
+(33, 20, 17, 1, 2, NULL, NULL, 12, 0, '2021-06-23 18:00:00', NULL, NULL, 5),
+(34, 18, 19, 2, 3, NULL, NULL, 3, 0, '2021-06-23 18:00:00', NULL, NULL, 5),
+(35, 22, 23, 1, 1, NULL, NULL, 10, 0, '2021-06-23 21:00:00', NULL, NULL, 6),
+(36, 24, 21, 0, 0, NULL, NULL, 5, 0, '2021-06-23 21:00:00', NULL, NULL, 6),
 (37, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-26 18:00:00', '2_A', '2_B', NULL),
 (38, NULL, NULL, NULL, NULL, NULL, NULL, 9, 1, '2021-06-26 21:00:00', '1_A', '2_C', NULL),
 (39, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2021-06-27 18:00:00', '1_C', '3_DEF', NULL),
@@ -456,11 +456,11 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pronostics`
+-- Table structure for table `predictions`
 --
 
-DROP TABLE IF EXISTS `pronostics`;
-CREATE TABLE IF NOT EXISTS `pronostics` (
+DROP TABLE IF EXISTS `predictions`;
+CREATE TABLE IF NOT EXISTS `predictions` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` smallint(5) UNSIGNED NOT NULL,
   `game_id` smallint(5) UNSIGNED NOT NULL,
@@ -472,7 +472,13 @@ CREATE TABLE IF NOT EXISTS `pronostics` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `prognostics_user_id_match_id_unique` (`user_id`,`game_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `predictions`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -656,7 +662,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_role_id_foreign` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`

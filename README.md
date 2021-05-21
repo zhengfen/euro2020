@@ -1,4 +1,4 @@
-The UEFA Euro 2020 pronostic web app
+The UEFA Euro 2020 prediction contest web app
 ## Install
 
 - git clone

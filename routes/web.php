@@ -51,8 +51,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(
     ['middleware' => ['auth']],
     function () {
-        Route::get('/pronostics', 'FrontController@pronostics');
-        Route::post('/pronostics/update', 'PronosticController@update');
+        Route::get('/predictions', 'FrontController@predictions');
+        Route::post('/predictions/update', 'PredictionController@update');
         // Classement, user points ranking
         Route::get('/ranking', 'FrontController@ranking')->name('ranking');
         Route::get('/api/dataset', 'FrontController@dataset');

@@ -50,7 +50,6 @@ export default {
       axios
         .post("/groups", this.item)
         .then(({ data }) => {
-          console.log("post return data", data);
           this.$emit("created", data.group);
           flash("Added success!", "success");
         })
@@ -62,7 +61,6 @@ export default {
       axios
         .patch("/groups/" + this.item.id, this.item)
         .then(({ data }) => {
-          console.log("patch return data", data);
           this.$emit("updated", data.group);
           flash("Edited success!", "success");
         })

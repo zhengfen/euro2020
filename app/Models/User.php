@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Game;
-use App\Models\Pronostic; 
+use App\Models\Prediction; 
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -45,9 +45,9 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
     // relationship
-    public function pronostics()
+    public function predictions()
     {
-        return $this->hasMany(Pronostic::class);
+        return $this->hasMany(Prediction::class);
     }
 
 
@@ -67,10 +67,10 @@ class User extends \TCG\Voyager\Models\User
     public function qualified(int $type)
     {
         $games_id = DB::table('games')->where('type', $type)->pluck('id'); 
-        $pronostics = Pronostic::where('user_id', $this->id)->whereIn('game_id', $games_id)->get(); 
-        foreach ($pronostics as $pronostic) {
-            if ($pronostic->team_h)  array_push($qualified, $pronostic->team_h);
-            if ($pronostic->team_a)  array_push($qualified, $pronostic->team_a);
+        $predictions = Prediction::where('user_id', $this->id)->whereIn('game_id', $games_id)->get(); 
+        foreach ($predictions as $prediction) {
+            if ($prediction->team_h)  array_push($qualified, $prediction->team_h);
+            if ($prediction->team_a)  array_push($qualified, $prediction->team_a);
         }
         return $qualified;
     }
@@ -79,10 +79,10 @@ class User extends \TCG\Voyager\Models\User
     public function first()
     {
         $game_id = DB::table('games')->where('type', 4)->first()->pluck('id'); 
-        $pronostic = Pronostic::where('user_id', $this->id)->where('game_id', $game_id)->first(); 
-        if ($pronostic && $pronostic->team_h !== null && $pronostic->team_a !== null && $pronostic->score_h !== null && $pronostic->score_a !== null) {
-            if ($pronostic->score_h > $pronostic->score_a) return $pronostic->team_h;
-            return $pronostic->team_a;
+        $prediction = Prediction::where('user_id', $this->id)->where('game_id', $game_id)->first(); 
+        if ($prediction && $prediction->team_h !== null && $prediction->team_a !== null && $prediction->score_h !== null && $prediction->score_a !== null) {
+            if ($prediction->score_h > $prediction->score_a) return $prediction->team_h;
+            return $prediction->team_a;
         }
         return null;
     }
@@ -95,23 +95,23 @@ class User extends \TCG\Voyager\Models\User
         if (!$games) {
             $games = Game::orderBy('date')->get();
         }
-        $pronostics = DB::table('pronostics')->where('user_id', $this->id)->get();
+        $predictions = DB::table('predictions')->where('user_id', $this->id)->get();
         foreach ($games as $game) {
             if ((is_null($game->score_h) || is_null($game->score_a)))   break;   // the game is not finished yet
             if (is_null($game->team_h) && is_null($game->team_a))   break;
             else {
-                $pronostic = $pronostics->where('game_id', $game->id)->first();
-                if (is_null($pronostic) || is_null($pronostic->score_h) || is_null($pronostic->score_a)) {
+                $prediction = $predictions->where('game_id', $game->id)->first();
+                if (is_null($prediction) || is_null($prediction->score_h) || is_null($prediction->score_a)) {
                     $point += 0;
                     array_push($points, $point);
                     continue;
-                }  // user have not complete the pronostics for the game
+                }  // user have not complete the predictions for the game
                 switch ($game->type) {
                     case 0:
-                        if (($pronostic->score_h <=> $pronostic->score_a) == ($game->score_h <=> $game->score_a)) {
+                        if (($prediction->score_h <=> $prediction->score_a) == ($game->score_h <=> $game->score_a)) {
                             $point += 2;
-                            if ($pronostic->score_h == $game->score_h) $point += 1;
-                            if ($pronostic->score_a == $game->score_a) $point += 1;
+                            if ($prediction->score_h == $game->score_h) $point += 1;
+                            if ($prediction->score_a == $game->score_a) $point += 1;
                         }
                         array_push($points, $point);
                         break;
