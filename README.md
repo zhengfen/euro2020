@@ -2,7 +2,7 @@ The UEFA Euro 2020 pronostic web app
 ## Install
 
 - git clone
-- create database from /dabase/euro2020.sql 
+- create database from /database/euro2020.sql 
 - edit .env
 - composer install
 - php artisan key:generate
