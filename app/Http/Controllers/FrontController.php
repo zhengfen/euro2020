@@ -49,7 +49,7 @@ class FrontController extends Controller
         $users = User::all(); 
         $dataset = array();
         $games = Game::orderBy('date')->get();   
-        foreach($users as $key=>$user) {
+        foreach ($users as $key=>$user) {
             array_push( $dataset, ['label'=>$user->name,'data'=>$user->points($games),'backgroundColor'=>'rgba(0, 0, 0, 0)','borderColor'=>'#'.$colorArray[$key%$colorNum], 'borderWidth'=>1]); 
         } 
         return $dataset; 
