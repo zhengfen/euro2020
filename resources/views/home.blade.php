@@ -44,8 +44,7 @@
                                 <li>20 points pour avoir choisi le bon champion du monde</li>
                             </ul>
                         </li>
-                    </ol>
-                    <a href="https://github.com/lsv/fifa-worldcup-2018-jsfrontend">Based on : lsv/fifa-worldcup-2018-jsfrontend</a>
+                    </ol>                    
                 </div>
             </div>
         </div>

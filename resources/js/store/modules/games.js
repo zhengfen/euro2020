@@ -1,3 +1,4 @@
+import moment from 'moment';
 
 const module = {
   namespaced: true,
@@ -7,7 +8,6 @@ const module = {
     games: [],
     stadiums: [],
     predictions: [],
-    disabled: false,
     statistics_group: []
   },
   mutations: {
@@ -26,7 +26,7 @@ const module = {
     predictionsMutation(state, payload) {
       state.predictions = payload;
     },
-    // mutate for a single game
+    // mutate prediction for a single game
     predictionMutation(state, payload) {
       const game = state.games.find(elem => elem.id === payload.game_id);
       // modify or add prediction
@@ -41,6 +41,7 @@ const module = {
         state.predictions.push(payload);
       }      
     }
+
   },
   actions: {
     async updatepredictionAction({ state, commit }, payload) {
@@ -57,6 +58,11 @@ const module = {
     }
   },
   getters: {
+    disabled : (state) => {
+      const date = state.games.map( elem => elem.date).sort()[0]; 
+      console.log('first game date', date); 
+      return moment().add(24, 'hours').isBefore(date)? false : true;
+    },
     getTeamById: (state) => (id) => {
       return state.teams.find(elem => elem.id === id);
     },

@@ -10,7 +10,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto" style="padding-left:10px">
                 <li class="nav-item"><a class="nav-link" href="/home">Bienvenue(e)</a></li>
-                <li class="nav-item"><a class="nav-link" href="/predictions">predictions</a></li>
+                <li class="nav-item"><a class="nav-link" href="/predictions">Pronostics</a></li>
                 <li class="nav-item"><a class="nav-link" href="/phase">Matches</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('ranking') }}">Classement</a></li>
                 @auth

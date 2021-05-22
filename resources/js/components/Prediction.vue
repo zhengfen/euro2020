@@ -76,8 +76,8 @@ export default {
   },
   computed: {
     disabled() {
-      // return  (  moment().add(24, 'hours').isBefore(this.game.getDate()) ) ? false : true;
-      return this.$store.state.games.disabled;
+      // return  moment().add(24, 'hours').isBefore(this.game.getDate())? false : true;
+      return this.$store.getters['games/disabled'];
     },
     prediction() {
       let id = this.game.id;
