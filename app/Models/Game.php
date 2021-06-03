@@ -12,6 +12,8 @@ class Game extends Model
     public $timestamps = false;
     protected $fillable = ['team_h','team_a','date','score_h','score_a','pen_h','pen_a','stadium_id','type','qual_h','qual_a',
     'group_id', // group_id to make calculate group standings easier
+    'percent_h',
+    'percent_a'
 ];
 
     //relationships

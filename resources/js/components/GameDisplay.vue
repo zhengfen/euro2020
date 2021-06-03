@@ -1,5 +1,9 @@
 <template>
-  <tr :class="finishedclass" :id="'game_' + game.id" v-if="game">
+  <tr
+    :class="finishedclass"
+    :id="'game_' + game.id"
+    v-if="game"
+  >
     <!-- date -->
     <td
       :class="gameclass + '--date'"
@@ -9,8 +13,14 @@
       {{ viewDate }}
     </td>
     <!-- team home -->
-    <td :class="homeclass + ' ' + gameclass + '--hometeam'" class="text-right">
-      <teamname :team="getTeamById(game.team_h)" :ha="'h'" />
+    <td
+      :class="homeclass + ' ' + gameclass + '--hometeam'"
+      class="text-right"
+    >
+      <teamname
+        :team="getTeamById(game.team_h)"
+        :ha="'h'"
+      />
       <!-- scores -->
       <label :class="gameclass + '--label'">
         <input
@@ -30,7 +40,13 @@
       class="text-center"
       :title="getStadiumName(game.stadium_id)"
     >
-      <small>Match {{ game.id }}</small>
+      <small>Match {{ game.id }} <br>
+        <span v-if="disabled">
+        <span v-if="game.percent_h !== null">{{  game.percent_h }}% </span>
+        -
+        <span v-if="game.percent_a !== null">{{  game.percent_a }}% </span>
+        </span>
+      </small>
     </td>
 
     <!-- team away -->
@@ -47,7 +63,10 @@
           disabled
         />
       </label>
-      <teamname :team="getTeamById(game.team_a)" :ha="'a'" />
+      <teamname
+        :team="getTeamById(game.team_a)"
+        :ha="'a'"
+      />
     </td>
   </tr>
 </template>
@@ -62,7 +81,7 @@ export default {
   props: {
     game: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
   computed: {
@@ -112,7 +131,10 @@ export default {
       }
       return "";
     },
-    ...mapGetters("games", ["getTeamById", "getStadiumName"]),
+    show_statistics() {
+
+    },
+    ...mapGetters("games", ["getTeamById", "getStadiumName", "disabled"]),
   },
   methods: {
     setResult(e) {

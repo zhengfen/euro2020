@@ -12,7 +12,8 @@
                 <li class="nav-item"><a class="nav-link" href="/home">Bienvenue(e)</a></li>
                 <li class="nav-item"><a class="nav-link" href="/predictions">Pronostics</a></li>
                 <li class="nav-item"><a class="nav-link" href="/phase">Matches</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('ranking') }}">Classement</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ranking">Classement</a></li>
+                <li class="nav-item"><a class="nav-link" href="/slides">Slides</a></li>
                 @auth
                 @if( Auth::user()->isAdmin())
                 <li {{ (isset($page) && $page == 'admin') ? 'class=active' : ''}}><a class="nav-link" href="/games">Admin</a></li>

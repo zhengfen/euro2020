@@ -1,3 +1,4 @@
+import axios from 'axios';
 import moment from 'moment';
 
 const module = {
@@ -44,6 +45,19 @@ const module = {
 
   },
   actions: {
+    async fetchGamesDataAction({ state, commit}){
+      return new Promise((resolve, reject) => {
+        axios.get("/api/games/dataset").then(({data}) =>{
+          if (data.groups) commit("groupsMutation", data.groups);
+          if (data.teams) commit("teamsMutation", data.teams); 
+          if (data.games) commit("gamesMutation", data.games); 
+          if (data.stadiums) commit("stadiumsMutation", data.stadiums); 
+          resolve(data); 
+        })
+        .catch(error => reject(error));
+      })
+    },
+
     async updatepredictionAction({ state, commit }, payload) {
       // commit('predictionMutation', payload);
       return new Promise((resolve, reject) => {

@@ -19,35 +19,24 @@
 import { mapGetters } from 'vuex'
 export default {
   props: {
-    groups: {
-      type: Array,
-      default: () => [],
-    },
-    teams: {
-      type: Array,
-      default: () => [],
-    },
-    games: {
-      type: Array,
-      default: () => [],
-    },
-    stadiums: {
-      type: Array,
-      default: () => [],
-    },
     predictions: {
       type: Array,
       default: () => [],
     },
   },
   created() {
-    this.$store.commit("games/groupsMutation", this.groups);
-    this.$store.commit("games/teamsMutation", this.teams);
-    this.$store.commit("games/gamesMutation", this.games);
-    this.$store.commit("games/stadiumsMutation", this.stadiums);
+    this.$store.dispatch("games/fetchGamesDataAction").then(() => this.loaded = true);
     this.$store.commit("games/predictionsMutation", this.predictions);
   },
+  data() {
+    return {
+      loaded: false
+    }
+  },
   computed: {
+    groups() {
+      return this.$store.state.games.groups;
+    },
     ...mapGetters("games", ["getThirdTeamsStandings"])
   }
 };

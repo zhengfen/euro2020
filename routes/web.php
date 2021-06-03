@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/phase', 'FrontController@phase');
+
 
 Auth::routes();
 
@@ -32,7 +32,7 @@ Route::group(
         Route::get('/api/teams', 'TeamController@index_api');
         Route::resource('/stadiums', 'StadiumController')->only(['index', 'store', 'update', 'destroy']);
         Route::get('/api/stadiums', 'StadiumController@index_api');
-
+        Route::get('/update/statistics', 'GameController@update_statistics'); 
         // 
         // clean tables
         Route::get('/table/truncate/{name}', 'AdminController@truncate');
@@ -53,8 +53,12 @@ Route::group(
     function () {
         Route::get('/predictions', 'FrontController@predictions');
         Route::post('/predictions/update', 'PredictionController@update');
-        // Classement, user points ranking
-        Route::get('/ranking', 'FrontController@ranking')->name('ranking');
-        Route::get('/api/dataset', 'FrontController@dataset');
     }
 );
+
+Route::get('/phase', 'FrontController@phase');
+Route::get('/api/games/dataset', 'FrontController@games_dataset'); 
+// Classement, user points ranking
+Route::get('/ranking', 'FrontController@ranking')->name('ranking');
+Route::get('/api/dataset', 'FrontController@dataset');
+Route::get('/slides', 'FrontController@slides');

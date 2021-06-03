@@ -5,6 +5,8 @@
         <strong>Games</strong>
       </div>
       <div class="flex-right-parent ml-auto">
+        <button class="btn btn-sm btn-primary" @click="udpate_statistics">update statistics</button>
+        <!-- search -->
         <input
           type="text"
           v-model="search_input"
@@ -12,6 +14,7 @@
           v-on:keyup.enter="fetch()"
           class="search-input"
         />
+        <!-- add button -->
         <button
           class="btn btn-sm btn-primary"
           @click="$modal.show('add_modal')"
@@ -169,6 +172,9 @@ export default {
       const item = this.groups.find((elem) => elem.id == id);
       if (item) return item.name;
     },
+    udpate_statistics(){
+      axios.get('/update/statistics'); 
+    }
   },
 };
 </script>
