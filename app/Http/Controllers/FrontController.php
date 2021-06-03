@@ -52,6 +52,7 @@ class FrontController extends Controller
         foreach ($users as $key=>$user) {
             array_push( $dataset, ['label'=>$user->name,'data'=>$user->points($games),'backgroundColor'=>'rgba(0, 0, 0, 0)','borderColor'=>'#'.$colorArray[$key%$colorNum], 'borderWidth'=>1]); 
         } 
+        usort($dataset, function ($a,$b){ return end($b['data']) <=> end($a['data']); });   
         return $dataset; 
     }
 
