@@ -116,7 +116,7 @@ class User extends \TCG\Voyager\Models\User
                         array_push($points, $point);
                         break;
                     case 1:
-                        $qualified = $this->qualified_16(1);
+                        $qualified = $this->qualified(1);
                         if (in_array($game->team_h, $qualified))   $point += 4;
                         if (in_array($game->team_a, $qualified))   $point += 4;
                         array_push($points, $point);
