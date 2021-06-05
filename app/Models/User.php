@@ -79,8 +79,9 @@ class User extends \TCG\Voyager\Models\User
     // get the champion team id
     public function first()
     {
-        $game_id = DB::table('games')->where('type', 4)->first()->pluck('id'); 
-        $prediction = Prediction::where('user_id', $this->id)->where('game_id', $game_id)->first(); 
+        $game = DB::table('games')->where('type', 4)->first(); 
+
+        $prediction = Prediction::where('user_id', $this->id)->where('game_id', $game->id)->first(); 
         if ($prediction && $prediction->team_h !== null && $prediction->team_a !== null && $prediction->score_h !== null && $prediction->score_a !== null) {
             if ($prediction->score_h > $prediction->score_a) return $prediction->team_h;
             return $prediction->team_a;
