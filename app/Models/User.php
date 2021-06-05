@@ -68,6 +68,7 @@ class User extends \TCG\Voyager\Models\User
     {
         $games_id = DB::table('games')->where('type', $type)->pluck('id'); 
         $predictions = Prediction::where('user_id', $this->id)->whereIn('game_id', $games_id)->get(); 
+        $qualified = []; 
         foreach ($predictions as $prediction) {
             if ($prediction->team_h)  array_push($qualified, $prediction->team_h);
             if ($prediction->team_a)  array_push($qualified, $prediction->team_a);
