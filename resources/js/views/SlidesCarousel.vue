@@ -1,10 +1,10 @@
 <template>
-  <carousel :loop="true" :autoplay="true" :autoplay-timeout="autoplayTimeout" :per-page="1" :pagination-enabled="false">
+  <carousel :loop="true" :autoplay="true" :autoplayTimeout="autoplayTimeout" :per-page="1" :pagination-enabled="false" >
     <slide>
-      <ranking-view />
+      <ranking-view :key="cnt" />
     </slide>
     <slide>
-      <phase-view />
+      <phase-view :key="cnt" />
     </slide>
   </carousel>
 </template>
@@ -19,13 +19,30 @@ export default {
   props:{
     autoplayTimeout:{
       type: Number,
-      default: 5000
+      default: 10000
     }
   },
   components: {
     Carousel,
     Slide
-  }
+  }, 
+  data(){
+    return {
+      cnt: 0
+    }
+  },
+  created(){
+    this.setTimer();
+  },
+  methods:{
+    setTimer(){
+      setInterval(this.updateCounter, 60*1000); 
+    },
+    updateCounter(){
+      this.cnt++; 
+      console.log(this.cnt); 
+    }
+  } 
 }
 </script>
 

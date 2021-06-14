@@ -24,7 +24,7 @@
           <tr v-for="(record, index) in dataset" :key="index">
             <td>{{ record.label }}</td>
             <td>{{ record.data.length > 35 ? record.data[36] : record.data[record.data.length-1]}}</td>
-            <td>{{  record.data[record.data.length-1] }}</td>
+            <td>{{ record.data[record.data.length-1] }}</td>
           </tr>
 
         </table>
@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     fetch() {
+      console.log('fetching in ranking view');
       axios.get('/api/dataset').then(({ data }) => {
         this.dataset = data;
         // set label
