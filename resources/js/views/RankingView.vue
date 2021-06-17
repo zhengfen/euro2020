@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="container-fluid bg-light">
     <div
-      class="container-fluid row"
-      style="background-color:#fff;"
+      class="row"
     >
       <div class="col-md-8">
         <p class="pageTitle">Classification</p>
