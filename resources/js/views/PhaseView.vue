@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded">
+  <div class="container-fluid" v-if="loaded">
     <section class="groups">
       <group-game
         v-for="(group, index) in groups"
