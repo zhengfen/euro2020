@@ -1,7 +1,7 @@
 The UEFA Euro 2020 prediction contest web app
 ## Install
 
-- git clone
+- download the code
 - create database from /database/euro2020.sql 
 - edit .env
 - composer install
@@ -10,7 +10,9 @@ The UEFA Euro 2020 prediction contest web app
 
 ## Description
 
-UI based on <a href="https://github.com/lsv/fifa-worldcup-2018-jsfrontend">lsv/fifa-worldcup-2018-jsfrontend</a>
+Demo: [ALRO](http://euro2020.alronet.ch/)  Please do not register in this site.
+
+UI based on [lsv/fifa-worldcup-2018-jsfrontend](https://github.com/lsv/fifa-worldcup-2018-jsfrontend)
 
 ![UI](https://github.com/zhengfen/euro2020/blob/main/public/images/foot_ui.png)
 
